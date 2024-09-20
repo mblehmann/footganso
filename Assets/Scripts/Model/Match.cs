@@ -32,13 +32,18 @@ public class Match
     {
         if (obj is Match otherMatch)
         {
-            return Id == otherMatch.Id;
+            return Id == otherMatch.Id && HomeTeam == otherMatch.HomeTeam && AwayTeam == otherMatch.AwayTeam;
         }
         return false;
     }
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(Id);
+        return HashCode.Combine(Id, HomeTeam, AwayTeam);
+    }
+
+    public override string ToString()
+    {
+        return $"[{Id}]: {HomeTeam.Name} x {AwayTeam.Name}";
     }
 }
