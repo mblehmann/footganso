@@ -15,4 +15,19 @@ public class Shuffler : IShuffler
     {
         return teams.OrderBy(n => RNG.Next());
     }
+
+    public IEnumerable<Team> ShiftRight(List<Team> teams)
+    {
+        List<Team> shiftRightTeams = new()
+        {
+            teams.First(),
+            teams.Last()
+        };
+        for (int index = 1; index < teams.Count - 1; index++)
+        {
+            shiftRightTeams.Add(teams[index - 1]);
+        }
+
+        return shiftRightTeams;
+    }
 }
