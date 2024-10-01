@@ -31,7 +31,7 @@ public class CupInteractor
     public void DrawRound(Cup cup)
     {
         Round currentRound = CreateRound(cup);
-        if (currentRound.Phase == CupPhase.Over) return;
+        if (currentRound.Phase == CupPhase.Champion) return;
 
         cup.AddRound(currentRound);
         CupPresenter?.DisplayRound(cup.CurrentRound);
@@ -41,7 +41,7 @@ public class CupInteractor
     {
         var cupPhase = GetCupPhase(cup.Teams.Count);
         Round currentRound = CupFactory.CreateRound(cupPhase);
-        if (cupPhase == CupPhase.Over) return currentRound;
+        if (cupPhase == CupPhase.Champion) return currentRound;
 
         List<Match> matches = DrawMatches(cup, cupPhase);
         currentRound.AddMatches(matches);
@@ -108,7 +108,7 @@ public class CupInteractor
 
     private CupPhase GetCupPhase(int numberOfTeams)
     {
-        if (numberOfTeams == 1) return CupPhase.Over;
+        if (numberOfTeams == 1) return CupPhase.Champion;
         if (numberOfTeams == 2) return CupPhase.Final;
         if (numberOfTeams <= 4) return CupPhase.SemiFinal;
         if (numberOfTeams <= 8) return CupPhase.QuarterFinal;

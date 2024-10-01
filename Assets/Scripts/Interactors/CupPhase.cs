@@ -1,7 +1,7 @@
 public enum CupPhase
 {
     None = 0,
-    Over = 1,
+    Champion = 1,
     Final = 2,
     SemiFinal = 4,
     QuarterFinal = 8,
